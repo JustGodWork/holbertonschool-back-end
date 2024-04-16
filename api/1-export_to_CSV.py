@@ -36,7 +36,7 @@ def setup():
     response = requests.get(api_url)
     if (response.ok):
         user_data = response.json()
-        get_todo_list(user_data.get('name'))
+        get_todo_list(user_data['name'])
     else:
         response.raise_for_status()
 

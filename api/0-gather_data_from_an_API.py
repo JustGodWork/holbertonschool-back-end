@@ -19,7 +19,7 @@ def get_todo_list(user_name):
         TOTAL_NUMBER_OF_TASKS = len(todo_data)
         NUMBER_OF_DONE_TASKS = sum(
             1 for task in todo_data if task.get('completed'))
-        print("Employee {} is done with tasks({}/{})".format(
+        print("Employee {} is done with tasks({}/{}):".format(
             EMPLOYEE_NAME,
             NUMBER_OF_DONE_TASKS,
             TOTAL_NUMBER_OF_TASKS
@@ -37,7 +37,7 @@ def setup():
     response = requests.get(api_url)
     if (response.ok):
         user_data = response.json()
-        get_todo_list(user_data.get('name'))
+        get_todo_list(user_data['name'])
     else:
         response.raise_for_status()
 
