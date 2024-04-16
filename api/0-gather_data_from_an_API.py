@@ -9,11 +9,12 @@ import requests
 from sys import argv
 
 
-def get_todo_list():
+def get_todo_list(user_name):
     api_url = "https://jsonplaceholder.typicode.com/todos"
     response = requests.get(api_url, params={"userId": argv[1]})
 
     if (response.ok):
+        EMPLOYEE_NAME = user_name
         todo_data = response.json()
         TOTAL_NUMBER_OF_TASKS = len(todo_data)
         NUMBER_OF_DONE_TASKS = sum(
@@ -34,12 +35,9 @@ def setup():
     response = requests.get(api_url)
     if (response.ok):
         user_data = response.json()
-        global EMPLOYEE_NAME
-        EMPLOYEE_NAME = user_data.get('name')
+        get_todo_list(user_data.get('name'))
     else:
         response.raise_for_status()
-
-    get_todo_list()
 
 
 if (__name__ == "__main__"):
