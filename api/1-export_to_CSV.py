@@ -6,6 +6,7 @@
 
 
 import csv
+import json
 import requests
 from sys import argv
 
@@ -16,7 +17,7 @@ def get_todo_list(user_name):
 
     if (response.ok):
         EMPLOYEE_NAME = user_name
-        todo_data = response.json()
+        todo_data = json.loads(response.content)
         with open(f"{argv[1]}.csv", "w") as csv_file:
             csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
             for task in todo_data:
