@@ -23,8 +23,8 @@ def get_todo_list(user_name):
                 csv_writer.writerow([
                     argv[1],
                     EMPLOYEE_NAME,
-                    task.get('completed'),
-                    task.get('title')
+                    task['completed'],
+                    task['title']
                 ])
     else:
         response.raise_for_status()

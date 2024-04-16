@@ -18,15 +18,15 @@ def get_todo_list(user_name):
         todo_data = response.json()
         TOTAL_NUMBER_OF_TASKS = len(todo_data)
         NUMBER_OF_DONE_TASKS = sum(
-            1 for task in todo_data if task.get('completed'))
+            1 for task in todo_data if task['completed'])
         print("Employee {} is done with tasks({}/{}):".format(
             EMPLOYEE_NAME,
             NUMBER_OF_DONE_TASKS,
             TOTAL_NUMBER_OF_TASKS
         ))
         for task in todo_data:
-            if (task.get('completed')):
-                print(f"\t{task.get('title')}")
+            if (task['completed']):
+                print(f"\t {task['title']}")
     else:
         response.raise_for_status()
 
