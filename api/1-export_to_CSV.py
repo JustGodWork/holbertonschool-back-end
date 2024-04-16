@@ -40,8 +40,6 @@ def setup():
     else:
         response.raise_for_status()
 
-    get_todo_list()
-
 
 if (__name__ == "__main__"):
     setup()
