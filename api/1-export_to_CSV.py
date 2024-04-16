@@ -8,7 +8,6 @@
 import csv
 import requests
 from sys import argv
-from typing import Any, Dict, List
 
 
 def get_todo_list():
@@ -16,7 +15,7 @@ def get_todo_list():
     response = requests.get(api_url, params={"userId": argv[1]})
 
     if (response.ok):
-        todo_data: List[Dict[str, Any]] = response.json()
+        todo_data = response.json()
         with open(f"{argv[1]}.csv", "w") as csv_file:
             csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
             for task in todo_data:
@@ -35,7 +34,7 @@ def setup():
 
     response = requests.get(api_url)
     if (response.ok):
-        user_data: Dict[str, Any] = response.json()
+        user_data = response.json()
         global EMPLOYEE_NAME
         EMPLOYEE_NAME = user_data.get('name')
     else:
